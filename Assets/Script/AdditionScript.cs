@@ -31,10 +31,19 @@ public class AdditionScript : MonoBehaviour
         Debug.Log("Random Number: " + randNumber_1);
         DisplayAnimals1();
 
-        randNumber_2 = Random.Range(1,9);
+        randNumber_2 = Random.Range(1, 9);
+
         
+        while (randNumber_1!= 0)
+        {
+            Start();
+            int sum = randNumber_1 + randNumber_2;
+        }
     }
 
+   
+
+    
     void SubmitAnswer() {
 
     }
