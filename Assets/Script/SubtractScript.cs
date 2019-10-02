@@ -75,6 +75,19 @@ public class SubtractScript : MonoBehaviour
     }
 
     //BUTTONS
+    public void MainButton()
+    {
+        gameOverText.text = "Main Menu";
+        if (mainMenu.activeSelf == true)
+        {
+            mainMenu.SetActive(false);
+        }
+        else
+        {
+            mainMenu.SetActive(true);
+        }
+    }
+
     public void AddAnswerCount()
     {
         if (yourAnswer < 99)
