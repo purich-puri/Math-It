@@ -51,6 +51,7 @@ public class AdditionScript : MonoBehaviour
     public GameObject animal_2_14;
     public GameObject animal_2_15;
 
+
     void Start()
     {
         mainMenu.SetActive(false);
@@ -471,3 +472,9 @@ public class AdditionScript : MonoBehaviour
         }
     }
 }
+
+
+
+
+
+
