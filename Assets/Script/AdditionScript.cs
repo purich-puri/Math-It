@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AdditionScript : MonoBehaviour
 {
@@ -13,7 +14,11 @@ public class AdditionScript : MonoBehaviour
     public Text levelText;
     public Text yourAnswerText;
     public Text leftText;
-    public Text RightText;
+    public Text rightText;
+
+    public Text gameOverText;
+    public GameObject mainMenu;
+    public GameObject popUp;
     
     public GameObject animal1;
     public GameObject animal2;
@@ -48,6 +53,7 @@ public class AdditionScript : MonoBehaviour
 
     void Start()
     {
+        mainMenu.SetActive(false);
         DisplayLevel();
 
         randNumber_1 = Random.Range(1, 3);
@@ -60,14 +66,21 @@ public class AdditionScript : MonoBehaviour
     }
 
     void DisplayLevel() {
-        levelText.text = "Level: " + levelNumber;
+        levelText.text = "LEVEL: " + levelNumber;
         yourAnswerText.text = "0";
+        
         Debug.Log(levelText.text);
     }
 
     void DisplayHeaderNumber() {
         leftText.text = randNumber_1.ToString();
-        RightText.text = randNumber_2.ToString();
+        rightText.text = randNumber_2.ToString();
+    }
+
+    IEnumerator PupUpText() {
+        popUp.SetActive(true);
+        yield return new WaitForSeconds(1);
+        popUp.SetActive(false);
     }
 
 //BUTTONS
@@ -86,6 +99,10 @@ public class AdditionScript : MonoBehaviour
         }
     }
 
+    public void ChangeScene() {
+        SceneManager.LoadScene(0);
+    }
+
     public void SubmitAnswer() {
         if (answer == yourAnswer)
         {
@@ -94,6 +111,7 @@ public class AdditionScript : MonoBehaviour
                 levelNumber++;
                 yourAnswer = 0;
                 DisplayLevel();
+                StartCoroutine(PupUpText());
 
                 randNumber_1 = randNumber_1 + Random.Range(0, 3);
                 randNumber_2 = randNumber_2 + Random.Range(0, 3);
@@ -104,10 +122,14 @@ public class AdditionScript : MonoBehaviour
             }
             else {
                 Debug.Log("WINNER");
+                gameOverText.text = "YOU WON!";
+                mainMenu.SetActive(true);
             }
         }
         else {
             Debug.Log("WRONG ANSWER");
+            gameOverText.text = "WRONG!";
+            mainMenu.SetActive(true);
         }
     }
 
