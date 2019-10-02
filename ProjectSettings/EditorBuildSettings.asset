@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameAdd.unity
     guid: f2992afd6d43c4589813080c2d99881c
+  - enabled: 1
+    path: Assets/Scenes/GameSubtract.unity
+    guid: 43f692737c4dc4c1fb178f2bb7a7ee97
   m_configObjects: {}
